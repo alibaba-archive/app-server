@@ -10,3 +10,4 @@ simple and farsighted server for spa app bese on node.js and es6.
 - scaffold for app
 - build process
 - deploy tools
+- evn config

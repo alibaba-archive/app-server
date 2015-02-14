@@ -1,6 +1,6 @@
 {
   "spiders": ["baiduspider", "googlebot", "sogou", "360"],
-  "staticPath": "./static",
+  "staticPath": "static/",
   "cdn": {
     "host": "https://cdn.teambition.com",
     "bucket": ""

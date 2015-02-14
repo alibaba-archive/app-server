@@ -1,4 +1,7 @@
 {
-  "css/app.css": "/css/app.d4ace51a.css",
-  "images/cases-illustrat-zh.jpg": "/images/cases-illustrat-zh.626cae6b.jpg"
+  "bower_components/teambition-ui/dist/css/teambition-ui.css": "/bower_components/teambition-ui/dist/css/teambition-ui.cd8d6fce.css",
+  "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.eot": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.a8bfdaec.eot",
+  "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.svg": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.9385e0fc.svg",
+  "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.ttf": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.f86a9a17.ttf",
+  "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.woff": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.f8dceee6.woff"
 }

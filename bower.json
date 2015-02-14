@@ -1,0 +1,19 @@
+{
+  "name": "app-server",
+  "version": "0.0.0",
+  "homepage": "https://github.com/island205/app-server",
+  "authors": [
+    "island205 <island205@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "teambition-ui": "git@code.teambition.com:components/tb-ui.git#~0.12.41"
+  }
+}

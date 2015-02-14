@@ -11,7 +11,7 @@ var staticResourceMap = require('./static-resource-map.json')
 function staticResource(resource) {
   var env = app.get('env')
   if (env == 'development') {
-    return resource;
+    return '/'+ resource;
   } else {
     return config.cdn.host + staticResourceMap[resource];
   }

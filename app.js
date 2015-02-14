@@ -4,6 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var i18n = require('i18n');
 var uaParser = require('ua-parser');
+var config = require('config');
+
+
+var staticResourceMap = require('./static-resource-map.json')
+function staticResource(resource) {
+  var env = app.get('env')
+  if (env == 'development') {
+    return resource;
+  } else {
+    return config.cdn.host + staticResourceMap[resource];
+  }
+}
 
 i18n.configure({
   locales: ['en', 'zh-CN'],
@@ -14,13 +26,12 @@ i18n.configure({
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'pages'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + config.staticPath +'/favicon.ico'));
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, config.staticPath)));
 
 app.use(i18n.init);
 
@@ -43,19 +54,37 @@ app.use(i18n.init);
 // console.log(r.device.isMobile);      // -> true
 // console.log(r.device.isSpider)       // -> false
 app.get("*", function(req, res, next) {
-  r = uaParser.parse(req.headers['user-agent']);
+  var r = uaParser.parse(req.headers['user-agent']);
   req.r = r
+  next()
 });
+
+app.use(function (req, res, next) {
+  var ua = req.headers['user-agent'].toLowerCase()
+
+  var isSpider = config.spiders.some(function (spider) {
+    return ua.indexOf(spider) > -1
+  })
+
+  if (isSpider) {
+    res.redirect('/site')
+  } else {
+    next()
+  }
+})
 
 app.get('/site', function(req, res) {
   res.render('site', {
-    r: req.r
+    r: req.r,
+    staticResource:staticResource
   })
 });
 
 app.use('/app', function(req, res) {
   res.render('app', {
-    r: req.r
+    r: req.r,
+    title: 'app-server',
+    staticResource:staticResource
   })
 });
 

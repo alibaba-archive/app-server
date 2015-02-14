@@ -12,7 +12,7 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('less', function() {
-  gulp.src('src/**/*.less')
+  gulp.src('./src/**/*.less')
     .pipe(less())
     .pipe(gulp.dest(config.staticPath))
     .pipe(livereload());

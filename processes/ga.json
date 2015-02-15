@@ -1,0 +1,8 @@
+[{
+  "name": "app-server-ga",
+  "script": "./bin/www",
+  "exec_mode": "cluster_mode",
+  "instances": 1,
+  "NODE_ENV": "development",
+  "PORT": 4001
+}]

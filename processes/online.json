@@ -1,0 +1,8 @@
+[{
+  "name": "app-server-production",
+  "script": "./bin/www",
+  "exec_mode": "cluster_mode",
+  "instances": 1,
+  "NODE_ENV": "production",
+  "PORT": 4001
+}]

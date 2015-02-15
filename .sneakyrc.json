@@ -1,0 +1,21 @@
+{
+  "bi": {
+    "destinations": [
+      "destinations"
+    ],
+    "nochdir": true,
+    "only": [
+      "app.js",
+      "package.json",
+      "locales**",
+      "pages**",
+      "config**",
+      "bin**",
+      "static-resource-map.json",
+      "processes**"
+    ],
+    "before": "npm install && bower install && gulp clean && gulp coffee && gulp less && gulp copy && gulp uglify && gulp requirejs && gulp cssmin && gulp rev && gulp upyun
+",
+    "after": "cd /usr/local/teambition/app-server-bi && npm install --production && pm2 restart app-server-bi"
+  }
+}

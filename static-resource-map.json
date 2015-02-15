@@ -1,4 +1,7 @@
 {
+  "css/app.css": "/css/app.6173fc5c.css",
+  "script/app.js": "/script/app.7d13001e.js",
+  "script/main.js": "/script/main.77a778d0.js",
   "bower_components/teambition-ui/dist/css/teambition-ui.css": "/bower_components/teambition-ui/dist/css/teambition-ui.cd8d6fce.css",
   "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.eot": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.a8bfdaec.eot",
   "bower_components/teambition-ui/dist/fonts/teambition-ui-icons.svg": "/bower_components/teambition-ui/dist/fonts/teambition-ui-icons.9385e0fc.svg",

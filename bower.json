@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "teambition-ui": "git@code.teambition.com:components/tb-ui.git#~0.12.41"
+    "teambition-ui": "git@code.teambition.com:components/tb-ui.git#~0.12.41",
+    "requirejs": "~2.1.16"
   }
 }

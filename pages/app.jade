@@ -4,3 +4,8 @@ block content
   h1= title
   p Welcome to #{title}
   script(type='text/javascript', src=staticResource('script/app.js'))
+  case env
+    when 'development'
+      script(data-main='/script/main.js', src=staticResource('bower_components/requirejs/require.js'))
+    when 'production'
+      script(type='text/javascript', src=staticResource('script/main.js'))

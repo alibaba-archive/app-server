@@ -4,12 +4,7 @@ var path = require('path');
 var config = require('config');
 
 gulp.task('rev', function() {
-  gulp.src([
-    config.staticPath + '/bower_components/teambition-ui/dist/css/teambition-ui.css',
-    config.staticPath + '/bower_components/teambition-ui/dist/fonts/*',
-  ], {
-    base: path.join(__dirname + '/../', config.staticPath)
-  })
+  gulp.src('.min/**')
     .pipe(revall())
     .pipe(gulp.dest('./.cdn'))
     .pipe(revall.manifest({

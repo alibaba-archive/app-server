@@ -76,6 +76,7 @@ app.use(function (req, res, next) {
 app.get('/site', function(req, res) {
   res.render('site', {
     r: req.r,
+    env: app.get('env'),
     staticResource:staticResource
   })
 });
@@ -84,6 +85,7 @@ app.use('/app', function(req, res) {
   res.render('app', {
     r: req.r,
     title: 'app-server',
+    env: app.get('env'),
     staticResource:staticResource
   })
 });

@@ -13,7 +13,7 @@ function staticResource(resource) {
   if (env == 'development') {
     return '/'+ resource;
   } else {
-    return config.cdn.host + staticResourceMap[resource];
+    return config.cdn.upyun.host + '/' + config.cdn.upyun.folder + staticResourceMap[resource];
   }
 }
 

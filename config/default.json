@@ -2,7 +2,11 @@
   "spiders": ["baiduspider", "googlebot", "sogou", "360"],
   "staticPath": "static/",
   "cdn": {
-    "host": "https://cdn.teambition.com",
-    "bucket": ""
+    "upyun": {
+      "host": "https://dn-st.b0.upaiyun.com",
+      "folder": "app-server",
+      "username": "username",
+      "password": "password"
+    }
   }
 }

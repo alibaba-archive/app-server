@@ -5,17 +5,8 @@ var logger = require('morgan');
 var i18n = require('i18n');
 var uaParser = require('ua-parser');
 var config = require('config');
-
-
-var staticResourceMap = require('./static-resource-map.json')
-function staticResource(resource) {
-  var env = app.get('env')
-  if (env == 'development') {
-    return '/'+ resource;
-  } else {
-    return config.cdn.upyun.host + '/' + config.cdn.upyun.folder + staticResourceMap[resource];
-  }
-}
+var pkg = require('./package.json');
+var versionFolder = pkg.version.replace(/[^\.]+$/, 'x');
 
 i18n.configure({
   locales: ['en', 'zh-CN'],
@@ -25,13 +16,31 @@ i18n.configure({
 
 var app = express();
 
+var env = app.get('env');
+
+var staticResourceMap = require('./static-resource-map.json')
+function staticResource(resource) {
+  if (env == 'development') {
+    return '/'+ resource;
+  }
+  else if (env == 'build') {
+    return '/' + versionFolder + '/' + staticResourceMap[resource];
+  } else {
+    return config.cdn.upyun.host + '/' + config.cdn.upyun.folder + '/' + versionFolder + '/' + staticResourceMap[resource];
+  }
+}
+
 // view engine setup
-app.set('views', path.join(__dirname, 'pages'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.use(favicon(__dirname + config.staticPath +'/favicon.ico'));
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, config.staticPath)));
+
+if (env == 'development') {
+  app.use(express.static(path.join(__dirname, 'static')));
+} else if (env == 'build') {
+  app.use(express.static(path.join(__dirname, './.cdn')));
+}
 
 app.use(i18n.init);
 
@@ -106,7 +115,8 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
+      staticResource:staticResource
     });
   });
 }
@@ -117,7 +127,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {},
+    staticResource:staticResource
   });
 });
 

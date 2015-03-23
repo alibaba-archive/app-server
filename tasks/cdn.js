@@ -4,7 +4,7 @@ var upyunDest = require('gulp-upyun').upyunDest;
 var config = require('config');
 
 gulp.task('upyun', function() {
-  gulp.src('./.cdn/**/*')
+  return gulp.src('./.cdn/**/*')
     .pipe(upyunDest('dn-st/' + config.cdn.upyun.folder, {
       username: config.cdn.upyun.username,
       password: config.cdn.upyun.password

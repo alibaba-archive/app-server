@@ -7,11 +7,11 @@ var minifyCSS = require('gulp-minify-css');
 
 // start copy
 gulp.task('copy', function() {
-  gulp.src([
-    config.staticPath + '/bower_components/teambition-ui/dist/fonts/*',
-    config.staticPath + '/images/**'
+  return gulp.src([
+    './static/bower_components/teambition-ui/dist/fonts/*',
+    './static/images/**'
   ], {
-    base: path.join(__dirname + '/../', config.staticPath)
+    base: path.join(__dirname, '../static')
   })
     .pipe(gulp.dest('./.min'));
 })
@@ -20,10 +20,10 @@ gulp.task('copy', function() {
 
 // start min script
 gulp.task('uglify', function() {
-  gulp.src([
-    config.staticPath + 'script/app.js'
+  return gulp.src([
+    './static/script/app.js'
   ], {
-    base: path.join(__dirname + '/../', config.staticPath)
+    base: path.join(__dirname, '../static')
   })
     .pipe(uglify())
     .pipe(gulp.dest('./.min'));
@@ -32,11 +32,11 @@ gulp.task('uglify', function() {
 
 // start min style
 gulp.task('cssmin', function () {
-  gulp.src([
-    config.staticPath + '/bower_components/teambition-ui/dist/css/teambition-ui.css',
-    config.staticPath + '/style/app.css'
+  return gulp.src([
+    './static/bower_components/teambition-ui/dist/css/teambition-ui.css',
+    './static/style/app.css'
   ], {
-    base: path.join(__dirname + '/../', config.staticPath)
+    base: path.join(__dirname, '../static')
   })
     .pipe(minifyCSS())
     .pipe(gulp.dest('./.min'))
@@ -46,7 +46,7 @@ gulp.task('cssmin', function () {
 
 // start requirejs
 gulp.task('requirejs', function() {
-  rjs({
+  return rjs({
     name: 'main',
     baseUrl: 'static/script',
     mainConfigFile: 'static/script/main.js',
@@ -57,3 +57,5 @@ gulp.task('requirejs', function() {
     .pipe(gulp.dest('./.min/script/'));
 });
 // end requirejs
+
+gulp.task('min', ['copy', 'cssmin', 'requirejs', 'uglify'])

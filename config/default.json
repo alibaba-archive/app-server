@@ -1,6 +1,5 @@
 {
   "spiders": ["baiduspider", "googlebot", "sogou", "360"],
-  "staticPath": "static/",
   "cdn": {
     "upyun": {
       "host": "https://dn-st.b0.upaiyun.com",

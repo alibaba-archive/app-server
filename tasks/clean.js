@@ -3,10 +3,10 @@ var clean = require('gulp-clean');
 var config = require('config');
 
 gulp.task('clean', function() {
-  gulp.src([
+  return gulp.src([
     './.cdn',
-    config.staticPath + '/style',
-    config.staticPath + '/script',
+    './static/style',
+    './static/script',
     './.min'
   ])
     .pipe(clean());
